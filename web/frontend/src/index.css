@@ -1,13 +1,129 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-extrabold: 800;
+  --font-weight-light: 300;
+
+  --font-size-normal: 16px;
+  --font-size-small: 14px;
+
+  --foreground-color: #F4F4F2;
+  --background-color: #E8E8E8;
+  --light-background-color-1: #D3EAFF;
+  --light-background-color-2: #BBCFFF;
+  --primary-color: #0F2C59;
+  --secondary-color: #BBBFCA;
+  --warning-color: #FF4D4F;
+  --success-color: #06AB66;
+  --white-color: #FFF;
+  --black-color: #000;
+  --link-color: #3E78FF;
+  --premium-color: #C89B09;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.foreground-color {
+  background-color: var(--foreground-color);
+}
+
+.background-color {
+  background-color: var(--background-color);
+}
+
+.light-background-color-1 {
+  background-color: var(--light-background-color-1);
+}
+
+.light-background-color-2 {
+  background-color: var(--light-background-color-2);
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.primary-disabled-color {
+  color: var(--primary-color);
+  opacity: 20%;
+}
+
+.secondary-color {
+  color: var(--secondary-color);
+}
+
+.warning-color {
+  color: var(--warning-color);
+}
+
+.success-color {
+  color: var(--success-color);
+}
+
+.white-color {
+  color: var(--white-color);
+}
+
+.black-color {
+  color: var(--black-color);
+}
+
+.link-color {
+  color: var(--link-color);
+}
+
+.premium-color {
+  color: var(--premium-color);
+}
+
+.font-family-regular {
+  font-family: "Montserrat", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: var(--font-weight-regular) !important;
+  font-style: normal !important;
+}
+
+.font-family-semibold {
+  font-family: "Montserrat", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: var(--font-weight-semibold) !important;
+  font-style: normal !important;
+}
+
+.font-family-extrabold {
+  font-family: "Montserrat", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: var(--font-weight-extrabold) !important;
+  font-style: normal !important;
+}
+
+.font-family-light {
+  font-family: "Montserrat", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: var(--font-weight-light) !important;
+  font-style: normal !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+.main-container {
+  background-color: #E8E8E8;
+  margin-top: 64px;
+  min-height: 100vh;
+}
+
+.secondary-container {
+  background-color: #E8E8E8;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.link-effect {
+  text-decoration: underline;
 }

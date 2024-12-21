@@ -1,0 +1,29 @@
+.sidebar-item-icon {
+    padding: 7px;
+}
+.sidebar-item-name {
+    padding: 7px;
+    line-height: 22px;
+}
+.sidebar-item {
+    gap: 3px;
+    padding: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+.sidebar-item-list {
+    gap: 30px;
+}
+.sidebar {
+    padding-left: 17px;
+    padding-right: 17px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 217px;
+    height: fit-content; 
+    position: sticky;
+    top: 37%;
+    border-radius: 0px 8px 8px 0px;
+    box-shadow: 0px 4px 8px var(--secondary-color);
+    z-index: 99;
+}

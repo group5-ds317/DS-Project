@@ -25,7 +25,7 @@ class Score(models.Model):
     term_number_id = models.ForeignKey(TermNumber, on_delete=models.CASCADE, null=False, blank=False)
     year_id = models.ForeignKey(Year, on_delete=models.CASCADE, null=False, blank=False)
     term_id = models.ForeignKey(Term, on_delete=models.CASCADE, null=False, blank=False)
-    score = models.FloatField(null=False, blank=False, validators=[MinValueValidator(0)])
+    score = models.FloatField(null=False, blank=False, validators=[MinValueValidator(0)], default=0)
     status = models.IntegerField(choices=StatusChoices.choices, default=StatusChoices.BINHTHUONG)
     passed = models.IntegerField(choices=PassedChoices.choices, default=PassedChoices.HOANTHANH)
     created_at = models.DateTimeField(default=timezone.now)
@@ -34,7 +34,7 @@ class Score(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['mssv', 'course_id', 'term_number_id'],
+                fields=['mssv', 'course_id', 'year_id', 'term_id'],
                 name='score_primary_key'
             )
         ]

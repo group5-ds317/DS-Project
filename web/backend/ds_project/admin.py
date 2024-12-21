@@ -3,9 +3,9 @@ from .models import student, major, faculty, training_system, year, term, term_n
 
 # Register your models here.
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('mssv', 'gender', 'start_year', 'faculty_id', 'training_system_id', 'major_id', 'created_at', 'updated_at')
+    list_display = ('mssv', 'gender', 'start_year', 'faculty_id', 'training_system_id', 'major_id', 'password', 'created_at', 'updated_at')
     list_filter = ['gender', 'start_year', 'created_at', 'updated_at']
-    search_fields = ['mssv', 'faculty_id', 'training_system_id', 'major_id']
+    search_fields = ['mssv', 'faculty_id', 'training_system_id', 'major_id', 'password']
 
 class MajorAdmin(admin.ModelAdmin):
     list_display = ('major_id', 'major', 'created_at', 'updated_at')
@@ -48,9 +48,9 @@ class GroupCourseTypeAdmin(admin.ModelAdmin):
     search_fields = ['group_course_type_id', 'group_course_type']
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('course_id', 'credit', 'major_id', 'course_type_id', 'group_course_type_id', 'created_at', 'updated_at')
+    list_display = ('course_id', 'course_name', 'summary', 'credit', 'major_id', 'course_type_id', 'group_course_type_id', 'created_at', 'updated_at')
     list_filter = ['created_at', 'updated_at']
-    search_fields = ['course_id', 'credit', 'major_id', 'course_type_id', 'group_course_type_id']
+    search_fields = ['course_id', 'course_name', 'summary', 'credit', 'major_id', 'course_type_id', 'group_course_type_id']
 
 class ScoreAdmin(admin.ModelAdmin):
     list_display = ('mssv', 'course_id', 'term_number_id', 'year_id', 'term_id', 'score', 'status', 'passed', 'created_at', 'updated_at')

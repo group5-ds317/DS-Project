@@ -5,7 +5,9 @@ from .group_course_type import GroupCourseType
 from .course_type import CourseType
 
 class Course(models.Model):
-    course_id = models.AutoField(primary_key=True)
+    course_id = models.TextField(primary_key=True)
+    course_name = models.TextField(null=True, blank=True)
+    summary = models.TextField(null=True, blank=True)
     credit = models.PositiveIntegerField(null=False, blank=False)
     major_id = models.ForeignKey(Major, on_delete=models.CASCADE, null=False, blank=False)
     course_type_id = models.ForeignKey(CourseType, on_delete=models.CASCADE, null=False, blank=False)

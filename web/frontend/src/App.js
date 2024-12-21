@@ -1,9 +1,11 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PrivateRoute from './utils/privateRoute.util.js'
 import { AuthProvider } from './context/authentication.context.js';
 
 import LoginPage from './pages/login.page.js'
+import HomePage from './pages/home.page.js';
+import AccountPage from './pages/account.page.js';
 
 function App() {
   return (
@@ -11,14 +13,22 @@ function App() {
       <Router>
         <Routes>
           <Route path='/login' element={ <LoginPage/> } />
-          {/* <Route 
+          <Route 
             path='/'
             element={
               <PrivateRoute>
-                <ChatPage />
+                <HomePage />
               </PrivateRoute>
             }
-          /> */}
+          />
+          <Route 
+            path='/account'
+            element={
+              <PrivateRoute>
+                <AccountPage />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </Router>
     </AuthProvider>

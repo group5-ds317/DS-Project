@@ -7,6 +7,14 @@ name = "pypi"
 django = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
+openpyxl = "*"
+pandas = "*"
+scikit-learn = "*"
+numpy = "*"
+django-extensions = "*"
+graphviz = "*"
+pydot = "*"
+pydotplus = "*"
 
 [dev-packages]
 

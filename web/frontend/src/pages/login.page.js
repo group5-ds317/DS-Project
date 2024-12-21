@@ -1,129 +1,107 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../assets/css/LoginPage.css";
+import Swal from 'sweetalert2';
+import '../assets/css/login.page.css';
+
 import { useAuth } from "../context/authentication.context";
-import UserAPI from "../apis/user";
-import { useLocation } from "react-router-dom";
+import StudentAPI from "../apis/student";
 
-const LoginPage = () => {
-  const navigate = useNavigate();
-  const { login } = useAuth();
-  const [username, setUsername] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [message, setMessage] = useState(""); // State để lưu thông báo
-  const [isSuccess, setIsSuccess] = useState(false); // State để xác định loại thông báo
+import InputFormNormal from "../components/inputFormNormal.component";
+import InputFormPassWord from "../components/inputFormPassword.component";
+import imgLoginPage from "../assets/img/login.png";
+import Button from "../components/button.component";
 
-  const location = useLocation();
-  const { message2 } = location.state || {}; // Lấy thông báo từ state
+export default function LoginPage() {
+    const navigate = useNavigate();
+    const { login } = useAuth()
+    const [MSSV, setMSSV] = useState('');
+    const [password, setPassword] = useState('');
+    const [MSSVError, setMSSVError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
 
-  useEffect(() => {
-    if (message2) {
-      const timeout = setTimeout(() => {
-        navigate("/login", { replace: true }); // Reset message2 sau 2 giây
-      }, 2000);
-      return () => clearTimeout(timeout); // Dọn dẹp timeout
-    }
-  }, [message2, navigate]);
-
-  const handleLogin = () => {
-    console.log("Username:", username);
-    console.log("Password:", password);
-
-    UserAPI.login(username, password)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          login(data.data.user_id, data.data.user_name);
-          setMessage(data.message); // Hiển thị thông báo thành công
-          setIsSuccess(true);
-
-          // Sau 1,5 giây chuyển hướng đến /chat
-          setTimeout(() => {
-            setMessage(""); // Ẩn thông báo
-            navigate("/chat");
-          }, 1500);
-        } else {
-          setMessage(data.message); 
-          setTimeout(() => {
-            setMessage(""); 
-          }, 3000);
-          setIsSuccess(false);
-        }
-      })
-      .catch((e) => {
-        setMessage("Lỗi đăng nhập: " + e.message);
-        setIsSuccess(false);
-      });
+    const handleLogin = () => {
+        StudentAPI.login(MSSV, password)
+        .then(response => response.json())
+        .then(data => {
+            if (data?.success) {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Đăng nhập thành công",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                .then(() => {
+                    login(data?.data?.mssv)
+                    navigate("/account")
+                })
+            } else {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Đăng nhập thất bại",
+                    text: data?.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        })
+        .catch(error => {
+            console.error(error)
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Đăng nhập thất bại",
+                text: error?.message,
+                showConfirmButton: false,
+                timer: 1500
+            })
+        })
     };
-
-  return (
-    <div className="wrapper">
-      <nav className="nav">
-        <div className="nav-logo">
-          <p>QA-LLM</p>
-        </div>
-        <div className="nav-button">
-          <button className="btn white-btn" id="loginBtn">
-            Đăng nhập
-          </button>
-        </div>
-      </nav>
-
-      <div className="form-box">
-        <div className="login-container" id="login">
-          <div className="top">
-            <header>ĐĂNG NHẬP</header>
-          </div>
-          <div className="input-box">
-            <input
-              type="text"
-              className="input-field"
-              placeholder="Tên đăng nhập"
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <i className="bx bx-user"></i>
-          </div>
-          <div className="input-box">
-            <input
-              type="password"
-              className="input-field"
-              placeholder="Mật khẩu"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <i className="bx bx-lock-alt"></i>
-          </div>
-          <div className="input-box">
-            <input
-              type="submit"
-              className="submit"
-              value="Đăng nhập"
-              onClick={handleLogin}
-            />
-          </div>
-          {/* <div className="two-col">
-            <div className="one">
-              <input type="checkbox" id="login-check" />
-              <label htmlFor="login-check"> Ghi nhớ đăng nhập</label>
+    
+    return (
+        <div className='login-page-container'>
+            <div className="login-left">
+                <img src={imgLoginPage} alt='Login Illustration' className='login-image' />
             </div>
-          </div> */}
+                
+            <div className="login-right">
+                <p className="title_login font-family-semibold">Đăng nhập</p>
+                
+                <InputFormNormal 
+                    placeholder="Mã số sinh viên"
+                    value={MSSV} 
+                    onChange={(e) => {
+                        const inputValue = e.target.value;
+                        setMSSV(inputValue);
+
+                        if (inputValue.trim()) {
+                            setMSSVError(false);
+                        }
+                    }}
+                    error={MSSVError} 
+                    errorMessage="Vui lòng nhập mã số sinh viên."
+                />            
+                <InputFormPassWord
+                    label=" "
+                    value={password}
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                        setPasswordError(false);
+                    }}
+                    error={passwordError}
+                    errorMessage="Vui lòng nhập mật khẩu."
+                /> 
+                <div className="login-button-space"></div>
+                <Button 
+                    type="primary" 
+                    size="large" 
+                    status="active" 
+                    onClick={handleLogin}
+                >
+                    Đăng nhập
+                </Button>
+            </div>
         </div>
-      </div>
-
-      {message && (
-        <div className={`message-box ${isSuccess ? "success" : "error"}`}>
-          {message}
-        </div>
-      )}
-
-      {message2 && (
-        <div className={`message-box2 ${isSuccess ? "success" : "error"}`}>
-          {message2} {/* Hiển thị thông báo đăng nhập */}
-        </div>
-      )}
-
-
-    </div>
-  );
-};
-
-export default LoginPage;
+    );
+}

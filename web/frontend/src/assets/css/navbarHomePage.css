@@ -1,0 +1,32 @@
+.navbar-homepage-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 64px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000
+}
+
+.logo-icon{
+    margin-left: 40px;
+}
+.navbar-homepage-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 40px;
+}
+.noti-results-container {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+}
+
+.navbar-username {
+    color: var(--primary-color);
+    font-size: var(--font-size-normal);
+}

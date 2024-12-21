@@ -13,8 +13,8 @@ class SubjectPopularity(models.Model):
     term_number_id = models.ForeignKey(TermNumber, on_delete=models.CASCADE, null=False, blank=False)
     student_number = models.PositiveIntegerField(null=False, blank=False)
     total_student_number = models.PositiveIntegerField(null=False, blank=False)
-    popularity = models.FloatField(null=False, blank=False, validators=[MinValueValidator(0), MaxValueValidator(1)]),
-    popularity_scaled = models.FloatField(null=False, blank=False, validators=[MinValueValidator(0), MaxValueValidator(1)]),
+    popularity = models.FloatField(null=False, blank=False, validators=[MinValueValidator(0)], default=0)
+    popularity_scaled = models.FloatField(null=False, blank=False, validators=[MinValueValidator(0)], default=0)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
 

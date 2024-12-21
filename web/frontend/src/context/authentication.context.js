@@ -1,33 +1,33 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { setCookie, getCookie, deleteCookie } from "../utils/cookies.util"
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    if(getCookie("user_id") && getCookie("username")) return true
+    if(getCookie("MSSV")) return true
     return false
   });
-  const [userId, setUserId] = useState(() => getCookie("user_id"))
-  const [username, setUsername] = useState(getCookie("username"))
+  const [MSSV, setMSSV] = useState(() => getCookie("MSSV"))
+  const [currentTerm, setCurrentTerm] = useState(() => getCookie("currentTerm"))
 
-  const login = (userId, username) => {
-    setUsername(username)
-    setUserId(userId)
-    setCookie('user_id', userId, 3)
-    setCookie('username', username, 3)
+  const login = (MSSV) => {
+    setMSSV(MSSV)
+    setCookie('MSSV', MSSV, 3)
     setIsAuthenticated(true)
   };
   const logout = () => {
-    setUsername(null)
-    setUserId(null)
-    deleteCookie('user_id')
-    deleteCookie('username')
+    setMSSV(null)
+    deleteCookie('MSSV')
     setIsAuthenticated(false);
+  }
+  const updateCurrentTerm = (updatedCurrentTerm) => {
+    setCurrentTerm(updatedCurrentTerm)
+    setCookie('currentTerm', updatedCurrentTerm, 3)
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, userId, username, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, MSSV, currentTerm, updateCurrentTerm, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

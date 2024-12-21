@@ -11,9 +11,9 @@ class SubjectScore(models.Model):
     faculty_id = models.ForeignKey(Faculty, on_delete=models.CASCADE, null=False, blank=False)
     year_id = models.ForeignKey(Year, on_delete=models.CASCADE, null=False, blank=False)
     term_number_id = models.ForeignKey(TermNumber, on_delete=models.CASCADE, null=False, blank=False)
-    score = models.FloatField(null=False, blank=False, validators=[MinValueValidator(0), MaxValueValidator(10)]),
-    score_ratio = models.FloatField(null=False, blank=False, validators=[MinValueValidator(0), MaxValueValidator(1)]),
-    score_ratio_scaled = models.FloatField(null=False, blank=False, validators=[MinValueValidator(0), MaxValueValidator(1)]),
+    score = models.FloatField(null=False, blank=False, validators=[MinValueValidator(0), MaxValueValidator(10)], default=0)
+    score_ratio = models.FloatField(null=False, blank=False, validators=[MinValueValidator(0)], default=0)
+    score_ratio_scaled = models.FloatField(null=False, blank=False, validators=[MinValueValidator(0)], default=0)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
 
