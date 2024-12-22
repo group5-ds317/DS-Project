@@ -29,6 +29,7 @@ GROUP_SUM_COURSE_PATH = "D:/UIT/Courses/Data Analyst/Final Project/DS-Project/da
 SUBJECT_POPULARITY_PATH = "D:/UIT/Courses/Data Analyst/Final Project/DS-Project/data/processed/processed data with pre-processed data/subject_popularity.xlsx"
 SUBJECT_SCORE_PATH = "D:/UIT/Courses/Data Analyst/Final Project/DS-Project/data/processed/processed data with pre-processed data/subject_score.xlsx"
 PHOBERT_PARAPHASED_TOMTAT = "D:/UIT/Courses/Data Analyst/Final Project/DS-Project/data/processed/processed data with pre-processed data/PhoBERT_paraphased_tomtat.csv"
+DANH_MUC_PATH = "D:/UIT/Courses/Data Analyst/Final Project/DS-Project/data/augmented/Danh-muc-mon-hoc.xlsx"
 
 class ImportMajorData(GenericAPIView):
     def post(self, request):
