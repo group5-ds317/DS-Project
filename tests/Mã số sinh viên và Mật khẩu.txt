@@ -1,0 +1,6 @@
+Vì phạm vi đồ án chỉ bao gồm những sinh viên có năm học bắt đầu từ năm 2014 và trong các kỳ học: 2, 3, 4, 5 nhằm đảm bảo tính đầy đủ và tính nhất quán của dữ liệu. Sau đây là một số mã số sinh viên và mật khẩu dùng để kiểm thử hệ thống khuyến nghị môn học (bản website) thỏa điều kiện trên:
+1. MSSV: FE8B49CEXPvAibaEXe/cg9419ghLE/LpBYcTHjDV - Mật khẩu: 972596
+2. MSSV: FE134612XPvAibaEXe+PmhPN+9CWc7zR4fbMyJRH - Mật khẩu: 522378
+3. MSSV: FDE6070DXPvAibaEXe8zt9d6Yn9pDDazARoQk6ZP - Mật khẩu: 801121
+4. MSSV: FD98FF70XPvAibaEXe88tz7NL7l/gpmosb/DWOS+ - Mật khẩu: 116672
+5. MSSV: FB9FCB31XPvAibaEXe9U/K5zYZONT/ejExcqpsve - Mật khẩu: 544995
